@@ -82,4 +82,4 @@ scenes.forEach(scene => {
 });
 
 fs.writeFileSync('./parsed/parsedScenes.json', JSON.stringify(parsedScenes));
-fs.writeFileSync('./parsed/parsedSpawns.json', JSON.stringify(parsedSpawns));
+fs.writeFileSync('./parsed/parsedSpawns.json', JSON.stringify(parsedSpawns)); 

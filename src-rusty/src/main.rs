@@ -1,12 +1,12 @@
-pub mod structs; 
+pub mod structs;
 
+use indicatif::{ProgressBar, ProgressStyle};
+use serde_json::{Error, Value};
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufReader;
-use std::collections::HashMap;
-use serde_json::{Value, Error};
-use structs::{Vec3, Spawn, Scene}; 
-use indicatif::{ProgressBar, ProgressStyle};
+use structs::{Scene, Spawn, Vec3};
 
 fn parse_vector3(d: &Value) -> Vec3 {
     Vec3 {
@@ -33,24 +33,34 @@ fn parse_scene(d: &Value) -> Scene {
         group_id: d["groupId"].as_i64().unwrap(),
         block_id: d["blockId"].as_i64().unwrap(),
         pos: parse_vector3(&d["pos"]),
-        spawns: d["spawns"].as_array().unwrap().iter().map(|spawn| parse_spawn(spawn)).collect(),
+        spawns: d["spawns"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .map(|spawn| parse_spawn(spawn))
+            .collect(),
     }
 }
 
 fn main() -> Result<(), Error> {
     let pb = ProgressBar::new(100);
-    pb.set_style(ProgressStyle::default_bar().template("[{elapsed_precise}] {bar:40.cyan/blue} {pos:>7}/{len:7} {msg}").unwrap());
-    
-    let file = File::open("../../data/Spawns.json").unwrap(); 
+    pb.set_style(
+        ProgressStyle::default_bar()
+            .template("[{elapsed_precise}] {bar:40.cyan/blue} {pos:>7}/{len:7} {msg}")
+            .unwrap(),
+    );
+
+    let file = File::open("data/Spawns.json")
+        .expect("Couldn't find file 'data/Spawns.json'. is your directory configured properly?");
     let reader = BufReader::new(file);
     let json: Value = serde_json::from_reader(reader)?;
-    
-    let mut scenes: Vec<Scene> = Vec::new(); 
+
+    let mut scenes: Vec<Scene> = Vec::new();
     pb.set_message("Parsing scenes");
     for scene in json.as_array().unwrap() {
         scenes.push(parse_scene(scene));
     }
-    
+
     let mut parsed_spawns: HashMap<String, Vec<Vec3>> = HashMap::new();
     pb.set_message("Parsing spawns");
     for scene in scenes {
@@ -58,15 +68,19 @@ fn main() -> Result<(), Error> {
             if !parsed_spawns.contains_key(&spawn.monster_id.to_string()) {
                 parsed_spawns.insert(spawn.monster_id.to_string(), Vec::new());
             } else {
-                parsed_spawns.get_mut(&spawn.monster_id.to_string()).unwrap().push(spawn.pos)
+                parsed_spawns
+                    .get_mut(&spawn.monster_id.to_string())
+                    .unwrap()
+                    .push(spawn.pos)
             }
         }
     }
-    
+
     pb.set_message("Writing to file");
-    let mut file = File::create("../../parsed/parsedSpawns.json").unwrap();
-    file.write(serde_json::to_string(&parsed_spawns).unwrap().as_bytes()).unwrap();
-    
+    let mut file = File::create("parsed/parsedSpawns.json").unwrap();
+    file.write(serde_json::to_string(&parsed_spawns).unwrap().as_bytes())
+        .unwrap();
+
     pb.finish_with_message("Done");
     Ok(())
 }

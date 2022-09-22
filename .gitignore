@@ -4,3 +4,4 @@ node_modules
 build
 target
 parsed
+package-lock.json

@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import readline from 'readline'
 
 interface Vec3 {
     x: number;
@@ -25,8 +24,8 @@ interface Scene {
     spawns: Spawn[];
 }
 
-const spawnFile = path.join(__dirname, "../../data/Spawns.json");
-const parsedSpawnFile = path.join(__dirname, "../../parsed/parsedSpawns.json");
+const spawnFile = path.join(__dirname, "../data/Spawns.json");
+const parsedSpawnFile = path.join(__dirname, "../parsed/parsedSpawns.json");
 
 function parseSpawn(d: any): Spawn {
     return {
@@ -56,12 +55,6 @@ function main() {
     let parsedSpawnCount = 0;
     const parsedSpawns: { [key: number]: number[][] } = {};
     for (const scene of scenes) {
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-        rl.write(null, { ctrl: true, name: "u" });
-        rl.write(scene.spawns.length.toString())
         for (const spawn of scene.spawns) {
             if (!parsedSpawns[spawn.monster_id]) {
                 parsedSpawns[spawn.monster_id] = [];
@@ -69,7 +62,6 @@ function main() {
             parsedSpawns[spawn.monster_id].push([spawn.pos.x, spawn.pos.y, spawn.pos.z]);
             parsedSpawnCount++;
         }
-        rl.close()
     }
     fs.writeFileSync(parsedSpawnFile, JSON.stringify(parsedSpawns));
 }

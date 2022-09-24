@@ -11,9 +11,8 @@ const parsedSpawns: { [key: string]: number[][] } = {};
 let parsedSpawnCount = 0;
 for (const scene of spawnData) {
     for (const spawn of scene.spawns) {
-        if (!parsedSpawns[spawn.monsterId]) {
+        if (!parsedSpawns[spawn.monsterId])
             parsedSpawns[spawn.monsterId] = [];
-        }
         parsedSpawns[spawn.monsterId].push([spawn.pos.x, spawn.pos.y, spawn.pos.z]);
         parsedSpawnCount++;
     }

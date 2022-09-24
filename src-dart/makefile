@@ -1,0 +1,2 @@
+all:
+	dart main.dart

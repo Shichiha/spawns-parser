@@ -1,7 +1,6 @@
 pub mod structs;
 
 use indicatif::{ProgressBar, ProgressStyle};
-use serde_json::json;
 use serde_json::{Error, Value};
 use std::collections::HashMap;
 use std::fs::File;
@@ -51,7 +50,7 @@ fn main() -> Result<(), Error> {
         .unwrap(),
     );
     
-    let file = File::open("data/Spawns.json")
+    let file = File::open("../data/Spawns.json")
     .expect("Couldn't find file 'data/Spawns.json'. is your directory configured properly?");
     let reader = BufReader::new(file);
     let json: Value = serde_json::from_reader(reader)?;
@@ -90,7 +89,7 @@ fn main() -> Result<(), Error> {
     }
 
     pb.set_message("Writing to file");
-    let mut file = File::create("parsed/parsedSpawns.json").expect("Couldn't create file");
+    let mut file = File::create("../parsed/parsedSpawns.json").expect("Couldn't create file");
     file.write(serde_json::to_string(&parsed_spawns).unwrap().as_bytes())
         .unwrap();
 

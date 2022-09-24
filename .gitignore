@@ -6,3 +6,4 @@ target
 parsed
 package-lock.json
 src-ts/index.js
+json.hpp

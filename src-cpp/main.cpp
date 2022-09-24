@@ -17,11 +17,11 @@ int main()
     {
         for (auto& spawn : scene["spawns"])
         {
-            if (parsed_spawns.find(spawn["monsterId"]) == parsed_spawns.end())
+            if (parsed_spawns.find(std::to_string(spawn["monsterId"].get<unsigned int>())) == parsed_spawns.end())
             {
-                parsed_spawns[spawn["monsterId"]] = nlohmann::json::array();
+                parsed_spawns[std::to_string(spawn["monsterId"].get<unsigned int>())] = nlohmann::json::array();
             }
-            parsed_spawns[spawn["monsterId"]].push_back({ spawn["pos"]["x"], spawn["pos"]["y"], spawn["pos"]["z"] });
+            parsed_spawns[std::to_string(spawn["monsterId"].get<unsigned int>())].push_back({ spawn["pos"]["x"], spawn["pos"]["y"], spawn["pos"]["z"] });
             parsed_spawn_count++;
         }
     }

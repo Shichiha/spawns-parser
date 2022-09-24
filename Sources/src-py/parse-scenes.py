@@ -5,8 +5,8 @@ import sys
 with open(spawn_file, "r") as f:
         spawn_data = json.load(f)
 def main():
-    spawn_file = os.path.join(os.path.dirname(__file__), "../data/Spawns.json")
-    parsed_spawn_file = os.path.join(os.path.dirname(__file__), "../parsed/parsedSpawns.json")
+    spawn_file = os.path.join(os.path.dirname(__file__), "../../data/Spawns.json")
+    parsed_spawn_file = os.path.join(os.path.dirname(__file__), "../../parsed/parsedSpawns.json")
     parsed_spawns = {}
     parsed_spawn_count = 0
     for scene in spawn_data:

@@ -5,7 +5,7 @@
 
 int main()
 {
-    FILE *spawn_file = fopen("../data/Spawns.json", "r");
+    FILE *spawn_file = fopen("../../data/Spawns.json", "r");
     fseek(spawn_file, 0, SEEK_END);
     long fsize = ftell(spawn_file);
     fseek(spawn_file, 0, SEEK_SET);
@@ -50,7 +50,7 @@ int main()
         }
     }
 
-    FILE *parsed_spawn_file = fopen("../parsed/parsedSpawns.json", "w");
+    FILE *parsed_spawn_file = fopen("../../parsed/parsedSpawns.json", "w");
     char *parsed_spawn_data = cJSON_Print(parsed_spawns);
     fwrite(parsed_spawn_data, strlen(parsed_spawn_data), 1, parsed_spawn_file);
     fclose(parsed_spawn_file);

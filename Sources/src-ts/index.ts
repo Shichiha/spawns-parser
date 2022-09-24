@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from "path";
 
-const spawnFile = path.join(__dirname, "../data/Spawns.json");
-const parsedSpawnFile = path.join(__dirname, "../parsed/parsedSpawns.json");
+const spawnFile = path.join(__dirname, "../../data/Spawns.json");
+const parsedSpawnFile = path.join(__dirname, "../../parsed/parsedSpawns.json");
 
 const spawnData = JSON.parse(fs.readFileSync(spawnFile, "utf8"));
 

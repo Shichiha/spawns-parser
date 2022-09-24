@@ -9,3 +9,4 @@ src-ts/index.js
 json.hpp
 json.zip
 cJSON.*
+.vscode

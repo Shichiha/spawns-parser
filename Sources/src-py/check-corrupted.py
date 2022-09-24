@@ -1,5 +1,5 @@
 import json
-with open('../data/spawns.json') as json_data:
+with open('../../data/Spawns.json') as json_data:
     d = json.load(json_data)
 toplevel = d[0].keys()
 corrupted = False

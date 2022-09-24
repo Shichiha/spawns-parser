@@ -5,7 +5,7 @@
 
 int main()
 {
-    std::ifstream spawn_file("../data/Spawns.json");
+    std::ifstream spawn_file("../../data/Spawns.json");
     nlohmann::json spawn_data;
     spawn_file >> spawn_data;
 
@@ -23,6 +23,6 @@ int main()
             parsed_spawn_count++;
         }
 
-    std::ofstream parsed_spawn_file("../parsed/parsedSpawns.json");
+    std::ofstream parsed_spawn_file("../../parsed/parsedSpawns.json");
     parsed_spawn_file << parsed_spawns.dump(4);
 }

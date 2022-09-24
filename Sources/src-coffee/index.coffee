@@ -1,8 +1,8 @@
 fs = require 'fs'
 path = require "path"
 
-spawnFile = path.join __dirname, "../data/Spawns.json"
-parsedSpawnFile = path.join __dirname, "../parsed/parsedSpawns.json"
+spawnFile = path.join __dirname, "../../data/Spawns.json"
+parsedSpawnFile = path.join __dirname, "../../parsed/parsedSpawns.json"
 
 spawnData = JSON.parse fs.readFileSync spawnFile, "utf8"
 

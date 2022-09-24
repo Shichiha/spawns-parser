@@ -2,8 +2,8 @@ import 'dart:io';
 import 'dart:convert';
 
 void main() {
-  var spawnFile = File('../data/Spawns.json');
-  var parsedSpawnFile = File('../parsed/parsedSpawns.json');
+  var spawnFile = File('../../data/Spawns.json');
+  var parsedSpawnFile = File('../../parsed/parsedSpawns.json');
 
   var spawnData = jsonDecode(spawnFile.readAsStringSync());
 

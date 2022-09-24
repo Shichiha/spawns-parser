@@ -1,8 +1,8 @@
 using JSON
 
 function main()
-    spawn_file = joinpath(@__DIR__, "../data/Spawns.json")
-    parsed_spawn_file = joinpath(@__DIR__, "../parsed/parsedSpawns.json")
+    spawn_file = joinpath(@__DIR__, "../../data/Spawns.json")
+    parsed_spawn_file = joinpath(@__DIR__, "../../parsed/parsedSpawns.json")
 
     spawn_data = JSON.parsefile(spawn_file)
 

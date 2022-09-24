@@ -2,11 +2,11 @@
 
 i seriously love makefiles
 
-# what
-idk, just a little spawns parser :/
+---
 
+A 'spawns' parser written in different languages for the sake of learning them.
 
-# how run?
+# Usage (per-language)
 
 (alphabetically)
 ## C

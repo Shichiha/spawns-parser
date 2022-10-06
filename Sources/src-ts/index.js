@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
-const spawnFile = path_1.default.join(__dirname, "../data/Spawns.json");
-const parsedSpawnFile = path_1.default.join(__dirname, "../parsed/parsedSpawns.json");
+const spawnFile = path_1.default.join(__dirname, "../../data/Spawns.json");
+const parsedSpawnFile = path_1.default.join(__dirname, "../../parsed/parsedSpawns.json");
 const spawnData = JSON.parse(fs_1.default.readFileSync(spawnFile, "utf8"));
 console.log(spawnData.length);
 const parsedSpawns = {};

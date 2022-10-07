@@ -12,8 +12,6 @@ A 'spawns' parser written in different languages for the sake of learning them.
 ## C
 1. `cd src-c`
 1. `make setup`
-1. unzip the zip
-1. place `cJSON.c` and `cJSON.h` into `src-c`
 1. `make all launch`
 
 ## Coffee

@@ -16,10 +16,8 @@ int main()
 
     cJSON *spawn_json = cJSON_Parse(spawn_data);
     int spawn_count = cJSON_GetArraySize(spawn_json);
-    printf("%d\n", spawn_count);
 
     cJSON *parsed_spawns = cJSON_CreateObject();
-    int parsed_spawn_count = 0;
     for (int i = 0; i < spawn_count; i++)
     {
         cJSON *scene = cJSON_GetArrayItem(spawn_json, i);
@@ -38,15 +36,11 @@ int main()
                 parsed_spawn = cJSON_GetObjectItem(parsed_spawns, monsterId_str);
             }
             cJSON *pos = cJSON_GetObjectItem(spawn, "pos");
-            cJSON *x = cJSON_GetObjectItem(pos, "x");
-            cJSON *y = cJSON_GetObjectItem(pos, "y");
-            cJSON *z = cJSON_GetObjectItem(pos, "z");
-            cJSON *parsed_spawn_pos = cJSON_CreateObject();
-            cJSON_AddItemToObject(parsed_spawn_pos, "x", cJSON_CreateNumber(x->valuedouble));
-            cJSON_AddItemToObject(parsed_spawn_pos, "y", cJSON_CreateNumber(y->valuedouble));
-            cJSON_AddItemToObject(parsed_spawn_pos, "z", cJSON_CreateNumber(z->valuedouble));
-            cJSON_AddItemToArray(parsed_spawn, parsed_spawn_pos);
-            parsed_spawn_count++;
+            cJSON *new_pos = cJSON_CreateArray();
+            cJSON_AddItemToArray(new_pos, cJSON_CreateNumber(cJSON_GetObjectItem(pos, "x")->valuedouble));
+            cJSON_AddItemToArray(new_pos, cJSON_CreateNumber(cJSON_GetObjectItem(pos, "y")->valuedouble));
+            cJSON_AddItemToArray(new_pos, cJSON_CreateNumber(cJSON_GetObjectItem(pos, "z")->valuedouble));
+            cJSON_AddItemToArray(parsed_spawn, new_pos);
         }
     }
 

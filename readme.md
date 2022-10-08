@@ -41,3 +41,8 @@ A 'spawns' parser written in different languages for the sake of learning them.
 ## TypeScript
 1. `npm i`
 1. `make all launch`
+
+---
+# developer note
+
+C makes the most beautiful JSONs 😍

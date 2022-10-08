@@ -1,0 +1,6 @@
+{
+  "name": "src-coffee",
+  "devDependencies": {
+    "coffeescript": "^2.7.0"
+  }
+}

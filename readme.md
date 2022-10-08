@@ -16,7 +16,7 @@ A 'spawns' parser written in different languages for the sake of learning them.
 
 ## Coffee
 1. `cd src-coffee`
-1. idk
+1. `make all run`
 
 ## C++
 1. `cd src-cpp`

@@ -73,11 +73,6 @@ dkms.conf
 # Compiled Static libraries
 *.lai
 
-# Executables
-
-### CoffeeScript ###
-*.js
-
 ### Dart ###
 # See https://www.dartlang.org/guides/libraries/private-files
 
@@ -144,7 +139,8 @@ Manifest.toml
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -508,3 +504,4 @@ Cargo.lock
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+parsed/parsedSpawns.json
